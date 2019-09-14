@@ -60,3 +60,9 @@ print("[INFO] YOLO took {:6f} seconds".format(end - start))
 boxes = []
 confidences = []
 class_ids = []
+
+# Populating lists with data from YOLO.
+# Loop over each of the layer outputs and detections.
+for output in layer_outputs:
+	for detection in output:
+		scores = detection[5:]
