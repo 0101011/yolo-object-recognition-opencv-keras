@@ -41,3 +41,17 @@ h, w = image.shape[:2]
 
 # Define layer names - only the *output* layer.
 layer_names = net.getLayerNames()
+layer_names = [layer_names[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+
+# Construct a blob from the input image and perform a forward pass
+# of the YOLO object detector, outputs bounding boxed and associated
+# probabilities.
+blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416),
+	                         swapRB=True, crop=False)
+net.setInput(blob)
+start = time.time()
+layer_outputs = net.forward(ln)
+end = time.time()
+
+# Show timing info on YOLO:
+print("[INFO] YOLO took {:6f} seconds".format(end - start))
