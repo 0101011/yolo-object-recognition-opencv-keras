@@ -19,4 +19,5 @@ ap.add_argument("-c", "--confidence", type=float, default=0.5,
 ap.add_argument("-t", "--threshold", type=float, default=0.3,
 	            help="Threshold when applying non-maxima suppression")
 
+# Turning args into keyword arguments using vars() function:
 args = vars(ap.parse_args())
