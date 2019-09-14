@@ -26,3 +26,7 @@ labels = open(labels_path).read().strip().split("\n")
 np.random.seed(42)
 colors = np.random.randint(0, 255, size=(len(labels), 3),
                            dtype="uint8")
+
+# Defining paths to YOLO weights and model config:
+weights_path = os.path.sep.join([args["yolo"], "yolov3.weights"])
+config_path = os.path.sep.join([args["yolo"], "yolov3.cfg"])
