@@ -55,3 +55,8 @@ end = time.time()
 
 # Show timing info on YOLO:
 print("[INFO] YOLO took {:6f} seconds".format(end - start))
+
+# Init lists of detected bounding boxes, confidences and class IDs.
+boxes = []
+confidences = []
+class_ids = []
