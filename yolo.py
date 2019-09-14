@@ -21,3 +21,12 @@ ap.add_argument("-t", "--threshold", type=float, default=0.3,
 
 # Turning args into keyword arguments using vars() function:
 args = vars(ap.parse_args())
+
+# Loading COCO class labels the YOLO model was trained on:
+labels_path = os.path.sep.join([arg["yolo"], "coco.names"])
+labels = open(labels_path).read().strip().split("\n")
+
+# Initializing a list of colors to represent each possible class label.
+np.random.seed(42)
+colors = np.random.randint(0, 255, size=(len(labels), 3),
+                           dtype="uint8")
