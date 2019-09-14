@@ -30,3 +30,14 @@ colors = np.random.randint(0, 255, size=(len(labels), 3),
 # Defining paths to YOLO weights and model config:
 weights_path = os.path.sep.join([args["yolo"], "yolov3.weights"])
 config_path = os.path.sep.join([args["yolo"], "yolov3.cfg"])
+
+# Load YOLO object detector trained on COCO dataset w/ 80 classes.
+print("[INFO] loading YOLO from disk")
+net = cv2.dnn.readNetFromDarknet(config_path, weights_path)  # OpenCV >= 3.4.2
+
+# Load input image and get its spatial dimenstions.
+image = cv2.imread(args["image"])
+h, w = image.shape[:2]
+
+# Define layer names - only the *output* layer.
+layer_names = net.getLayerNames()
