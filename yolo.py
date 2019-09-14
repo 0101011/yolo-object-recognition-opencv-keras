@@ -16,3 +16,7 @@ ap.add_argument("-y", "--yolo", required=True,
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	            help="Minimum probability to filter weak detections")
 
+ap.add_argument("-t", "--threshold", type=float, default=0.3,
+	            help="Threshold when applying non-maxima suppression")
+
+args = vars(ap.parse_args())
