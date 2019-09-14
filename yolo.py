@@ -4,7 +4,7 @@ import time
 import cv2
 import os
 
-# Argument parser
+# Argument parser for input and parameters.
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-i", "--image", required=True,
