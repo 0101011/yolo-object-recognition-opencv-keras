@@ -6,9 +6,9 @@ import os
 
 # Argument parser for input and parameters.
 ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required=True,
+ap.add_argument("-i", "--image", required=False,  # TODO: Must be True
 	            help="Path to an input image")
-ap.add_argument("-y", "--yolo", required=True,
+ap.add_argument("-y", "--yolo", required=False,  # TODO: Must be True
 	            help="Base path to YOLO folder")
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	            help="Minimum probability to filter weak detections")
@@ -19,7 +19,7 @@ ap.add_argument("-t", "--threshold", type=float, default=0.3,
 args = vars(ap.parse_args())
 
 # Loading COCO class labels the YOLO model was trained on:
-labels_path = os.path.sep.join([arg["yolo"], "coco.names"])
+labels_path = os.path.sep.join([args["yolo"], "coco.names"])
 labels = open(labels_path).read().strip().split("\n")
 
 # Initializing a list of colors to represent each possible class label.
@@ -66,3 +66,4 @@ class_ids = []
 for output in layer_outputs:
 	for detection in output:
 		scores = detection[5:]
+
