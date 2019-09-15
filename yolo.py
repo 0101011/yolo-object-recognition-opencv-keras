@@ -19,7 +19,7 @@ ap.add_argument("-t", "--threshold", type=float, default=0.3,
 args = vars(ap.parse_args())
 
 # Loading COCO class labels the YOLO model was trained on:
-labels_path = os.path.sep.join([args["yolo"], "coco.names"])
+labels_path = os.path.sep.join([args["yolo"], "coco_classes.txt"])
 labels = open(labels_path).read().strip().split("\n")
 
 # Initializing a list of colors to represent each possible class label.
