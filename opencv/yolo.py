@@ -4,6 +4,11 @@ import time
 import cv2
 import os
 
+'''
+Important:
+Use absolute path to avoid the cv2 dnn parse issue
+'''
+
 # Argument parser for input and parameters.
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True,
